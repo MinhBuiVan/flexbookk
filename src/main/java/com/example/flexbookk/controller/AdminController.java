@@ -15,7 +15,6 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-
     @GetMapping("/login")
     public User login(@RequestParam String username, String password) {
         return adminService.getLogin(username, password);

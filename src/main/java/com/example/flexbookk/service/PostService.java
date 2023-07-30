@@ -7,5 +7,5 @@ import java.util.List;
 
 @Service
 public interface PostService {
-    List<Post> getAllPosts();
+    List<Post> findAllPost();
 }

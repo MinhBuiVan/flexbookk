@@ -9,7 +9,5 @@ import java.util.List;
 @Service
 public interface AdminService {
 
-
-
     User getLogin(String username, String password);
 }

@@ -1,5 +1,6 @@
 package com.example.flexbookk.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,10 +21,12 @@ public class Friend {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id1", nullable = false, referencedColumnName = "user_id")
+    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private User user1;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id2", nullable = false, referencedColumnName = "user_id")
+    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private User user2;
 
     @Column(name = "status", nullable = false, columnDefinition = "ENUM('pending','accepted','declined','blocked') NOT NULL")
@@ -31,6 +34,7 @@ public class Friend {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "action_user_id", nullable = false, referencedColumnName = "user_id")
+    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private User actionUser;
 
     @Column(name = "created_at", nullable = false, columnDefinition = "timestamp default current_timestamp")

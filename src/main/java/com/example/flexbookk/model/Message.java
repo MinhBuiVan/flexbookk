@@ -1,5 +1,6 @@
 package com.example.flexbookk.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,10 +21,12 @@ public class Message {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sender_id", nullable = false, referencedColumnName = "user_id")
+    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private User sender;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "receiver_id", nullable = false, referencedColumnName = "user_id")
+    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private User receiver;
 
     @Column(name = "message", nullable = false)
